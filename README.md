@@ -1,1 +1,1 @@
-# ATM_Java_StandAlone_Application
+# ATM_Java_Application
