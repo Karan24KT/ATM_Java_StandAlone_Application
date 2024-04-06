@@ -5,10 +5,15 @@ import java.util.Scanner;
 //import javax.imageio.plugins.tiff.ExifGPSTagSet;
 
 public class ATM {
-	final int pin = 1234;
-	//public static float balance = 10002;
-	
-	public void menu() {
+	final static int pin = 1234;
+	// public static float balance = 10002;
+
+	public ATM(int pin) {
+		// TODO Auto-generated constructor stub
+
+	}
+
+	public static void menu() {
 		// 1. Withdraw Money
 		// 2. Account Balance
 		// 3. Deposit Money
@@ -20,30 +25,29 @@ public class ATM {
 		System.out.println("2. WithDraw Money");
 		System.out.println("3. Deposit Money");
 		System.out.println("4. EXIT");
-		
+
 		Scanner scanner = new Scanner(System.in);
 		int customerChoice = scanner.nextInt();
-		
+
 		checkCustomMenuChoice(customerChoice);
-		 	
+
 	}
-	
-	public void showMenuAgain() {
-		//showMenuAgain==true ? menu() : System.exit(0);
+
+	public static void showMenuAgain() {
+		// showMenuAgain==true ? menu() : System.exit(0);
 		Scanner scanner = new Scanner(System.in);
-		int  showAgain = scanner.nextInt();
-		
-		if(showAgain == 1) {
+		int showAgain = scanner.nextInt();
+
+		if (showAgain == 1) {
 			menu();
-		}
-		else {
+		} else {
 			MenuFunction.exit();
-			//System.exit(0);
+			// System.exit(0);
 		}
 	}
-	
-	public void checkCustomMenuChoice(int customerChoice) {
-		
+
+	public static void checkCustomMenuChoice(int customerChoice) {
+
 		switch (customerChoice) {
 		case 1:
 			System.out.println("### Current Account Balance Service ### ");
@@ -76,25 +80,25 @@ public class ATM {
 			showMenuAgain();
 			break;
 		}
-		
+
 	}
-	
-	public void EnterPIN() {
+
+	public static int EnterPIN() {
 		System.out.println("Enter 4 Digit PIN");
 		Scanner scanner = new Scanner(System.in);
 		int PIN = scanner.nextInt();
-		
+
 		checkPIN(PIN);
+		return PIN;
 	}
-	
-	public void checkPIN(int pinEnterByCustomer) {
-		if(pinEnterByCustomer == pin) {
+
+	public static void checkPIN(int pinEnterByCustomer) {
+		if (pinEnterByCustomer == pin) {
 			System.out.println("***** Access Granted *****");
 			System.out.println("Correct PIN");
 			System.out.println();
 			menu();
-		}
-		else {
+		} else {
 			System.out.println("***** Security Alert ******");
 			System.out.println("Invalid PIN");
 			System.out.println();
@@ -102,16 +106,20 @@ public class ATM {
 			EnterPIN();
 		}
 	}
-	
+
 	public static void main(String[] args) {
-		
+
 		System.out.println("***** WELCOME To KT~Dev ATM ******");
 		System.out.println();
-		ATM Customer1 = new ATM();
-		
-		//Customer1.pin = 1355;
-		Customer1.EnterPIN();
-		
-		 
+
+		// System.out.println("Enter 4 DIGIT PIN");
+
+		int pin = ATM.EnterPIN();
+		ATM Customer1 = new ATM(pin);
+
+		// Customer1.pin = 1355;
+		// Customer1.EnterPIN();
+
 	}
+
 }
